@@ -1,0 +1,22 @@
+*.class
+*target/
+*META-INF/
+*.mymetadata
+*.settings/
+*.project
+.classpath
+
+*dubbo-registry/
+disconf/download*
+*/disconf/download*
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+.idea
+*.iml
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
