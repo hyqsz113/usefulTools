@@ -1,4 +1,4 @@
-package com.idianyou.cglive.util;
+package com.utils.redis;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;

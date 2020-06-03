@@ -1,9 +1,10 @@
-package com.idianyou.redsdk;
+package com.utils.dingding;
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.google.common.eventbus.AsyncEventBus;
+import com.google.common.eventbus.EventBus;
+import com.google.common.eventbus.Subscribe;
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpResponse;
@@ -15,17 +16,15 @@ import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import com.google.common.eventbus.AsyncEventBus;
-import com.google.common.eventbus.EventBus;
-import com.google.common.eventbus.Subscribe;
+import java.util.concurrent.Executors;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @ClassName: DingTalkUtil.java
  * @version: v1.0.0
  * @Description: 钉钉通知类
- * @see https://open-doc.dingtalk.com/docs/doc.htm?spm=a219a.7629140.0.0.11cc4a975aDFgw&treeId=257&articleId=105735&docType=1
+ * @See https://open-doc.dingtalk.com/docs/doc.htm?spm=a219a.7629140.0.0.11cc4a975aDFgw&treeId=257&articleId=105735&docType=1
  * @author: yangyu
  * @date: 2019年2月16日 下午6:18:13
  */
