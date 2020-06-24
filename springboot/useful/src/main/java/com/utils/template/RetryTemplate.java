@@ -52,9 +52,15 @@ public abstract class RetryTemplate {
      */
     protected abstract Object doBiz() throws Exception; //预留一个doBiz方法由业务方来实现，在其中书写需要重试的业务代码，然后执行即可
 
+    /**
+     * 执行，如果
+     * @return
+     * @throws InterruptedException
+     */
     public Object execute() throws InterruptedException {
         for (int i = 0; i < retryTime; i++) {
             try {
+                System.out.println("当前线程名："+Thread.currentThread().getName());
                 return doBiz();
             } catch (Exception e) {
                 log.error("业务执行出现异常，e: {}", e);
