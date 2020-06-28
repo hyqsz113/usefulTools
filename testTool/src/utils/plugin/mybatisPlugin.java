@@ -1,16 +1,12 @@
-package com.utils.plugin;
+package utils.plugin;
 
-import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.plugin.*;
 import org.apache.ibatis.reflection.MetaObject;
 import org.apache.ibatis.reflection.SystemMetaObject;
-import org.apache.ibatis.session.ResultHandler;
-import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
-import java.sql.Statement;
 import java.util.Properties;
 
 /**
@@ -21,30 +17,24 @@ import java.util.Properties;
  **/
 
 /**
- *@Intercepts 注解就是用来标明拦截哪些类，哪些方法
+ *  @Intercepts 注解就是用来标明拦截哪些类，哪些方法
  *
  * 总结，mybatis可以拦截的类分四大类
  *
- * 一、Executor，Executor类可以说是执行sql的全过程，如组装参数，sql改造，结果处理，比较广泛，但实际用的不多
+ * 一、executor，executor类可以说是执行sql的全过程，如组装参数，sql改造，结果处理，比较广泛，但实际用的不多
  *
  * 二、StatementHandler，这个是执行sql的过程，可以获取到待执行的sql，可用来改造sql，如分页，分表，最常拦截的类
  *
- * 三、ParameterHandler，这个用来拦截sql的参数，可以自定义参数组装规则
+ * 三、paremeterHandler，这个用来拦截sql的参数，可以自定义参数组装规则
  *
- * 四、ResultHandler，这个用来处理结果
- *
- *  拦截过多，会使得速度变慢
+ * 四、resultHandler，这个用来处理结果
  */
 @Intercepts(
         value = {
-                @Signature(type = StatementHandler.class, method = "prepare", args = {Connection.class,Integer.class}),
-                @Signature(type = StatementHandler.class, method = "query", args = {Statement.class, ResultHandler.class}),
-                @Signature(type = StatementHandler.class, method = "update", args = {Statement.class}),
-                //@Signature(type = Executor.class, method = "query", args = {Connection.class}),
-                //@Signature(type = Executor.class, method = "update", args = {Connection.class})
+                @Signature(type = StatementHandler.class, method = "prepare", args = {Connection.class}
+                )
         }
 )
-// @Component 需要启动时添加进spring容器
 public class mybatisPlugin implements Interceptor {
     /**
      * 这个方法是mybatis的核心方法
